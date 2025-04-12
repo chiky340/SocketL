@@ -1,13 +1,10 @@
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class IOStream {
     public static void main(String[] args){
         try (FileWriter fw = new FileWriter("file.txt")) {
-            fw.write("nigga\n");
-            fw.append("something");
+            var gs = new BufferedWriter(fw);
+            gs.write("now using a buffered reader");
             System.out.println("file has been made");
         }catch (FileNotFoundException e){
             System.out.println("file was not found");
