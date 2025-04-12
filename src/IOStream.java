@@ -6,6 +6,8 @@ import java.io.InputStream;
 public class IOStream {
     public static void main(String[] args){
         try (FileWriter fw = new FileWriter("file.txt")) {
+            fw.write("nigga\n");
+            fw.append("something");
             System.out.println("file has been made");
         }catch (FileNotFoundException e){
             System.out.println("file was not found");
