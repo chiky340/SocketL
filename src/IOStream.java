@@ -9,7 +9,6 @@ public class IOStream {
         }catch (IOException e){
             System.out.println("file wasnt read");
         }
-
         
     }
 }
