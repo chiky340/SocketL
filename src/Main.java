@@ -12,6 +12,8 @@ final int portNumber = 12345;
             System.out.println("is this a sever yes or no");
             if (scanner.nextLine().equalsIgnoreCase("y")){
                 new MyServer().start(portNumber);
+            }else{
+                System.out.println("Client TODO");
             }
         }
     }
