@@ -6,6 +6,7 @@ import java.net.ServerSocket;
 public class MyServer {
     public void start(int portNumber) {
         try (var serverSocket = new ServerSocket(portNumber)) {
+            System.out.println("waiting for clients");
             var client = serverSocket.accept();
             var clientIp = client.getInetAddress().getHostAddress();
             var clientPort = client.getPort();
