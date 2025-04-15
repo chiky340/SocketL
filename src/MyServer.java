@@ -10,6 +10,10 @@ public class MyServer {
             var clientIp = client.getInetAddress().getHostAddress();
             var clientPort = client.getPort();
             var clientInput = new BufferedReader(new InputStreamReader(client.getInputStream()));
+
+            for(String inputLine; (inputLine = clientInput.readLine()) != null;){
+                System.out.println("${clientIp}:${clientPort}):${inputLine}");
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
