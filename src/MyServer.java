@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class IOStream {
+public class MyServer {
     public static void main(String[] args){
         try (var br = new BufferedReader(new FileReader("file.txt"))) {
             System.out.println(br.lines());
@@ -9,6 +9,6 @@ public class IOStream {
         }catch (IOException e){
             System.out.println("file wasnt read");
         }
-        
+
     }
 }
