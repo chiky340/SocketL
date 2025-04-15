@@ -6,8 +6,9 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Main {
-final int portNumber = 12345;
     public static void main(String[] args) {
+        final int portNumber = 12345;
+
         try(var scanner = new Scanner(System.in)){
             System.out.println("is this a sever yes or no");
             if (scanner.nextLine().equalsIgnoreCase("y")){
