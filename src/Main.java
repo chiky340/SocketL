@@ -14,7 +14,7 @@ public class Main {
             if (scanner.nextLine().equalsIgnoreCase("y")){
                 new MyServer().start(portNumber);
             }else{
-                new MyClient().start(portNumber);
+                new MyClient().start(portNumber,scanner);
             }
         }
     }
