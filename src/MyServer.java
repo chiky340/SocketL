@@ -1,10 +1,15 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 
 public class MyServer {
     public void start(int portNumber) {
         try (var serverSocket = new ServerSocket(portNumber)) {
-            var socket = serverSocket.accept();
+            var client = serverSocket.accept();
+            var clientIp = client.getInetAddress().getHostAddress();
+            var clientPort = client.getPort();
+            var clientInput = new BufferedReader(new InputStreamReader(client.getInputStream()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
