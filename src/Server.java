@@ -1,5 +1,5 @@
-public class Server {
-    public void start(){
+import java.net.ServerSocket;
 
-    }
+public class Server {
+    private ServerSocket serverSocket;
 }
