@@ -6,5 +6,9 @@ public class Server {
     public Server(ServerSocket serverSocket) {
         this.serverSocket = serverSocket;
     }
+
+    public void startServer(){
+
+    }
 }
 
