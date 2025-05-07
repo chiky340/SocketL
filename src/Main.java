@@ -9,21 +9,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        var server = new ServerSocket(1234);
-        System.out.println("server is waiting");
+        ServerSocket server = new ServerSocket(1234); // Listen on port 1234
+        System.out.println("Server is waiting...");
 
-        Socket client = server.accept();
-        System.out.println("client connected");
+        Socket client = server.accept(); // Accept connection
+        System.out.println("Client connected!");
 
-        var in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-        var out = new PrintWriter(client.getOutputStream(),true);
+        BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
-        var message = in.readLine();
-        System.out.println("Client says: "+message);
+        String message = in.readLine(); // Read message from client
+        System.out.println("Client says: " + message);
 
-        out.println("hello from server");
+
         client.close();
         server.close();
-
     }
 }
