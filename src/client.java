@@ -2,17 +2,25 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class client {
-    public static void main(String[] args)throws Exception{
-        var socket = new Socket("localhost",1234);
+    public static void main(String[] args)throws Exception {
+        Socket socket = new Socket("localhost", 1234); // Connect to server
 
-        var in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        var out = new PrintWriter(socket.getOutputStream());
+        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-        out.println("hello from server");
+        var scanner = new Scanner(System.in);
+        while(true){
+            var input = scanner.next();
+            if (input.equals("close"))
+                break;
+            else {
+                out.println(input);
+            }
+        }
 
-        var response = in.readLine();
-        System.out.println("server says: "+ response);
+        socket.close();
     }
 }
