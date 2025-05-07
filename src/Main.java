@@ -19,6 +19,11 @@ public class Main {
         var out = new PrintWriter(client.getOutputStream(),true);
 
         var message = in.readLine();
+        System.out.println("Client says: "+message);
+
+        out.println("hello from server");
+        client.close();
+        server.close();
 
     }
 }
