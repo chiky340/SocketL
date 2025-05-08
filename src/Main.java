@@ -18,10 +18,9 @@ public class Main {
         BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
         String message = in.readLine(); // Read message from client
-        System.out.println("Client says: " + message);
-
-
-        client.close();
-        server.close();
+        if (){
+        }else {
+            System.out.println(message);
+        }
     }
 }
