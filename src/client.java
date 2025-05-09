@@ -10,9 +10,10 @@ public class client {
             var fileW = new PrintWriter(new OutputStreamWriter(outS , StandardCharsets.UTF_8));
 
             var scan = new Scanner(System.in);
-            var input = scan.nextLine();
             while(true) {
+            var input = scan.nextLine();
                 fileW.println(input);
+                fileW.flush();
             }
         }
     }
