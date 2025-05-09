@@ -9,8 +9,11 @@ public class client {
             var outS = socket.getOutputStream();
             var fileW = new PrintWriter(new OutputStreamWriter(outS , StandardCharsets.UTF_8));
 
-            fileW.println("hello world");
-            fileW.flush();
+            var scan = new Scanner(System.in);
+            var input = scan.nextLine();
+            while(true) {
+                fileW.println(input);
+            }
         }
     }
 }
