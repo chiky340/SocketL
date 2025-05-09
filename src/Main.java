@@ -1,10 +1,8 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Proxy;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Main {
@@ -14,8 +12,15 @@ public class Main {
                var clientSocket = sSocket.accept();
 
                new Thread(()->{
-
-               })
+                   try {
+                       InputStream in = clientSocket.getInputStream();
+                       var reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
+                       String line;
+                       while((line=reader.readLine()) != null)
+                   } catch (IOException e) {
+                       throw new RuntimeException(e);
+                   }
+               }).start();
 
 
             }
