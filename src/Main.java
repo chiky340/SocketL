@@ -9,18 +9,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        ServerSocket server = new ServerSocket(1234); // Listen on port 1234
-        System.out.println("Server is waiting...");
+        try(var sSocket = new ServerSocket(1234)){
 
-        Socket client = server.accept(); // Accept connection
-        System.out.println("Client connected!");
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-
-        String message = in.readLine(); // Read message from client
-        if (){
-        }else {
-            System.out.println(message);
+        }catch (IOException){
+            System.out.println("something happened with the I/O");
         }
     }
 }
