@@ -16,7 +16,9 @@ public class Main {
                        InputStream in = clientSocket.getInputStream();
                        var reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
                        String line;
-                       while((line=reader.readLine()) != null)
+                       while((line=reader.readLine()) != null){
+                           System.out.println(line);
+                       }
                    } catch (IOException e) {
                        throw new RuntimeException(e);
                    }
