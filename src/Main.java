@@ -18,17 +18,9 @@ public class Main {
                        String line;
                        while((line=reader.readLine()) != null){
                            System.out.println(line);
-                           break;
                        }
                    } catch (IOException e) {
                        throw new RuntimeException(e);
-                   }finally {
-                       try {
-                           clientSocket.close();
-                           System.out.println("socket has been closed");
-                       } catch (IOException e) {
-                           throw new RuntimeException(e);
-                       }
                    }
                }).start();
 
