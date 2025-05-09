@@ -13,6 +13,10 @@ public class Main {
             while (true){
                var clientSocket = sSocket.accept();
 
+               new Thread(()->{
+
+               })
+
 
             }
         }catch (IOException){
