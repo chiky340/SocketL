@@ -10,7 +10,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         try(var sSocket = new ServerSocket(1234)){
+            while (true){
+               var clientSocket = sSocket.accept();
 
+
+            }
         }catch (IOException){
             System.out.println("something happened with the I/O");
         }
