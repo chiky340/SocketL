@@ -32,7 +32,7 @@ public class Main {
 
 
             }
-        }catch (IOException){
+        }catch (IOException e){
             System.out.println("something happened with the I/O");
         }
     }
