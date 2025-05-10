@@ -11,9 +11,15 @@ public class client {
 
             var scan = new Scanner(System.in);
             while(true) {
-            var input = scan.nextLine();
+                var input = scan.nextLine();
+                if(!(input.equalsIgnoreCase("close"))) {
                 fileW.println(input);
                 fileW.flush();
+                }else {
+                    fileW.println("closing");
+                    fileW.flush();
+                    break;
+                }
             }
         }
     }
