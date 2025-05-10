@@ -10,7 +10,7 @@ public class Main {
         try(var sSocket = new ServerSocket(1234)){
             while (true){
                var clientSocket = sSocket.accept();
-
+                System.out.println("connection made");
                new Thread(()->{
                    try {
                        InputStream in = clientSocket.getInputStream();
@@ -20,7 +20,7 @@ public class Main {
                            System.out.println(line);
                        }
                    } catch (IOException e) {
-                       throw new RuntimeException(e);
+                       System.out.println("a user went out");
                    }
                }).start();
 
