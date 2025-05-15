@@ -23,9 +23,12 @@ public class Main {
                         System.out.println("Error reading from client: " + e.getMessage());
                     }
                 }).start();
+
                 new Thread(()->{
                     try {
                         var wr = new PrintWriter(clientSocket.getOutputStream());
+                        wr.println("hello");
+                        wr.flush();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
