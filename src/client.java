@@ -2,7 +2,6 @@ import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
-
 public class client {
     public static void main(String[] args)throws Exception {
         try(var socket = new Socket("localhost",1235)){
@@ -11,14 +10,16 @@ public class client {
 
             var scan = new Scanner(System.in);
             while(true) {
-                var input = scan.nextLine();
-                if(input.equalsIgnoreCase("close")) {
-                    System.out.println("closing");
-                    break;
-                }else {
-                    fileW.println(input);
-                    fileW.flush();
-                }
+                new Thread(()->{
+                    BufferedWriter read = null;
+                    try {
+                        read = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                        read.write("hello");
+                        read.flush();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }).start();
             }
         }
     }
