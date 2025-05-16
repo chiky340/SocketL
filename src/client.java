@@ -8,7 +8,6 @@ public class client {
         try(var socket = new Socket("localhost",1235)){
             var outS = socket.getOutputStream();
             var fileW = new PrintWriter(new OutputStreamWriter(outS , StandardCharsets.UTF_8));
-            var fileIn = new BufferedReader(new InputStreamReader(socket.getInputStream(),StandardCharsets.UTF_8));
 
             var scan = new Scanner(System.in);
             while(true) {
@@ -22,9 +21,12 @@ public class client {
                     }
                 }).start();
                 new Thread(()->{
-                    try {
-                        var in = fileIn.readLine();
-                        System.out.println(in);
+                    try (BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8))) {
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            System.out.println(line);
+                        }
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
