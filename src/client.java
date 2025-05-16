@@ -22,7 +22,12 @@ public class client {
                     }
                 }).start();
                 new Thread(()->{
-
+                    try {
+                        var in = fileIn.readLine();
+                        System.out.println(in);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }).start();
             }
 
