@@ -1,14 +1,13 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(1235)) {
+            var scanner = new Scanner(System.in);
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("someone connected");
@@ -24,10 +23,11 @@ public class Main {
                     }
                 }).start();
 
+                var input = scanner.next();
                 new Thread(()->{
                     try {
-                        var wr = new PrintWriter(clientSocket.getOutputStream());
-                        wr.println("hello");
+                        var wr = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream(),StandardCharsets.UTF_8));
+                        wr.println(input);
                         wr.flush();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
