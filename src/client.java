@@ -17,7 +17,24 @@ public class client {
         }catch (IOException e){
             closeEverything(socket,bufferedReader,bufferedWriter);
         }
+    }
 
+    public void sendMessage(){
+        try{
+            bufferedWriter.write(username);
+            bufferedWriter.newLine();
+            bufferedWriter.flush();
+
+            Scanner scanner = new Scanner(System.in);
+            while(socket.isConnected()){
+                String messageToSend = scanner.nextLine();
+                bufferedWriter.write(username+ ": "+messageToSend);
+                bufferedWriter.newLine();
+                bufferedWriter.flush();
+            }
+        }catch (IOException e){
+            closeEverything(socket,bufferedReader,bufferedWriter);
+        }
     }
 
     public void closeEverything(Socket socket,BufferedReader bufferedReader,BufferedWriter bufferedWriter){
