@@ -13,7 +13,24 @@ public class client {
             this.socket = socket;
             this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        }catch (IOException e)
+            this.username = username;
+        }catch (IOException e){
+            closeEverything(socket,bufferedReader,bufferedWriter);
+        }
 
+    }
+
+    public void closeEverything(Socket socket,BufferedReader bufferedReader,BufferedWriter bufferedWriter){
+        try{
+            if (bufferedWriter != null) {
+                bufferedWriter.close();
+            }if (bufferedReader != null) {
+                bufferedReader.close();
+            }if (socket != null){
+                socket.close();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
