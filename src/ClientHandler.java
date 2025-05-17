@@ -36,4 +36,8 @@ public class ClientHandler implements Runnable{
             }
         }
     }
+
+    public void broadCastMessage(String messageToSend){
+
+    }
 }
