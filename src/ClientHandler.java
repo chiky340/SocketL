@@ -1,10 +1,14 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 
 public class ClientHandler implements Runnable{
-    private Socket socket;
-
     public static ArrayList<ClientHandler> clientHandlers = new ArrayList<>();
+    private Socket socket;
+    private BufferedReader bufferedReader;
+    private BufferedWriter bufferedWriter;
+    private String clientUsername;
 
     public ClientHandler(Socket socket) {
         this.socket = socket;
