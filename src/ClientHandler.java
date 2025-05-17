@@ -18,12 +18,22 @@ public class ClientHandler implements Runnable{
             clientHandlers.add(this);
             broadCastMessage("Server: "+ clientUsername+" has entered the chat!");
         }catch (IOException e){
-            e.printStackTrace();
+            closeEverything(socket,bufferedReader,bufferedWriter);
         }
     }
 
     @Override
     public void run() {
+        String messageFromClient;
 
+        while(socket.isConnected()){
+            try{
+                messageFromClient = bufferedReader.readLine();
+                broadCastMessage(messageFromClient);
+            } catch (IOException e) {
+                closeEverything(socket,bufferedReader,bufferedWriter);
+                break;
+            }
+        }
     }
 }
