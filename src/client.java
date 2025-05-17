@@ -37,6 +37,21 @@ public class client {
         }
     }
 
+    public void listenForMessage(){
+        new Thread(()->{
+            String msgFromGroup;
+
+            while (socket.isConnected()){
+                try{
+                    msgFromGroup = bufferedReader.readLine();
+                    System.out.println(msgFromGroup);
+                }catch (IOException e){
+                    closeEverything(socket,bufferedReader,bufferedWriter);
+                }
+            }
+        }).start();
+    }
+
     public void closeEverything(Socket socket,BufferedReader bufferedReader,BufferedWriter bufferedWriter){
         try{
             if (bufferedWriter != null) {
