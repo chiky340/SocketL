@@ -50,4 +50,13 @@ public class ClientHandler implements Runnable{
             }
         });
     }
+
+    public void removeClientHandler(){
+        clientHandlers.remove(this);
+        broadCastMessage("Server: "+clientUsername+ " has left the chat!");
+    }
+
+    public void closeEverything(Socket socket,BufferedReader bufferedReader,BufferedWriter bufferedWriter){
+
+    }
 }
