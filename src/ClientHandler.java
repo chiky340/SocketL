@@ -38,6 +38,16 @@ public class ClientHandler implements Runnable{
     }
 
     public void broadCastMessage(String messageToSend){
-
+        clientHandlers.stream().forEach(client->{
+            try{
+                if (!client.clientUsername.equalsIgnoreCase(clientUsername)){
+                    client.bufferedWriter.write(messageToSend);
+                    client.bufferedWriter.newLine();
+                    client.bufferedWriter.flush();
+                }
+            }catch (IOException){
+                closeEverything(socket,bufferedReader,bufferedWriter);
+            }
+        });
     }
 }
