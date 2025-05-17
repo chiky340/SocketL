@@ -18,7 +18,7 @@ public class Server {
                 Thread thread = new Thread(clientHandler);
                 thread.start();
             }
-        }catch (IOException){
+        }catch (IOException e){
             closeServerSocket();
         }
     }
